@@ -14,9 +14,12 @@ import os
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env", override=False)
 
 
 # Quick-start development settings - unsuitable for production
@@ -85,10 +88,31 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', ''),
+        'USER': os.environ.get('POSTGRES_USER', ''),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST', ''),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'CONN_MAX_AGE': 60,
+        'CONN_HEALTH_CHECKS': True,
+        'OPTIONS': {
+            'sslmode': os.environ.get('POSTGRES_SSLMODE', 'prefer'),
+        },
     }
 }
+
+required_database_settings = ('NAME', 'USER', 'PASSWORD', 'HOST')
+missing_database_settings = [
+    f'POSTGRES_{setting}'
+    for setting in required_database_settings
+    if not DATABASES['default'][setting]
+]
+if missing_database_settings:
+    raise ImproperlyConfigured(
+        'Configure as variáveis no arquivo .env: '
+        + ', '.join(missing_database_settings)
+    )
 
 
 # Password validation

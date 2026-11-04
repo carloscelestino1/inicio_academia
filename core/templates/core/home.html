@@ -1,15 +1,77 @@
 <!doctype html>
+{% load static %}
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Início Academia</title>
+    <meta name="theme-color" content="#111713">
+    <meta name="description" content="Uma nova forma de cuidar da sua evolução. Conheça a Início Academia.">
+    <title>Início Academia — Seu próximo nível começa aqui</title>
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
   </head>
   <body>
-    <main>
-      <h1>Início Academia</h1>
-      <p>Seu projeto de academia está pronto para começar.</p>
-      <p><a href="/admin/">Acessar painel administrativo</a></p>
-    </main>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Início Academia, página inicial">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 9v6M7 6v12M17 6v12M20 9v6M7 12h10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span>início academia</span>
+        </a>
+        <a class="header-link" href="/admin/">Área administrativa <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-content">
+            <p class="eyebrow">Movimento que transforma</p>
+            <h1 id="hero-title">Seu próximo nível começa <span>aqui.</span></h1>
+            <p class="hero-copy">
+              Um espaço para treinar com propósito, construir constância e descobrir
+              do que você é capaz. A sua jornada começa com o primeiro passo.
+            </p>
+            <div class="actions">
+              <a class="primary-link" href="/admin/">
+                Acessar painel administrativo
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="action-note">Consistência acima de tudo.</span>
+            </div>
+          </div>
+
+          <aside class="feature-card" aria-label="Destaque da Início Academia">
+            <div class="card-topline">
+              <span class="card-label">A sua jornada</span>
+              <span class="status-dot" aria-hidden="true"></span>
+            </div>
+            <div class="card-content">
+              <span class="card-index">01 / TODO DIA</span>
+              <h2>Feito para evoluir.</h2>
+              <p>Mais foco no que importa: você, seu ritmo e cada conquista pelo caminho.</p>
+            </div>
+            <div class="card-footer"><span aria-hidden="true">↗</span> Um treino de cada vez</div>
+          </aside>
+        </section>
+
+        <section class="highlights" aria-label="Pilares da academia">
+          <div class="highlight">
+            <strong>Treino com propósito</strong>
+            <p>Objetivos claros para manter você no caminho.</p>
+          </div>
+          <div class="highlight">
+            <strong>Ritmo que é seu</strong>
+            <p>Respeite seu processo e celebre cada avanço.</p>
+          </div>
+          <div class="highlight">
+            <strong>Constância de verdade</strong>
+            <p>Pequenos passos também levam longe.</p>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
